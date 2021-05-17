@@ -1,35 +1,14 @@
-import React, { useState } from 'react';
-import { useGetMovies } from './useGetMovies';
+import React from 'react';
+import { createClient, Provider } from 'urql';
+import { MovieSearch } from './MovieSearch';
 
-const App = () => {
-  const [search, setSearch] = useState('Star Wars');
-  const [result] = useGetMovies(search);
+export const App = () => {
+  const client = createClient({ url: 'https://tmdb.apps.quintero.io/' });
 
   return (
-    <>
+    <Provider value={client}>
       <h1>Movie search</h1>
-      <input
-        value={search}
-        onChange={(event) => setSearch(event.target.value)}
-      />
-      {result.fetching ? 'loading...' : undefined}
-      <div>
-        {result.data?.movies.search.edges.length === 0
-          ? 'no movies found'
-          : undefined}
-        <ul>
-          {result.data?.movies.search.edges.map(({ node: movie }) => (
-            <li key={movie.id}>
-              {movie.poster ? (
-                <img src={movie.poster} alt={movie.title} height={200} />
-              ) : undefined}
-              {movie.title} ({movie.rating})
-            </li>
-          ))}
-        </ul>
-      </div>
-    </>
+      <MovieSearch initialSearch="Star Wars" />
+    </Provider>
   );
 };
-
-export default App;

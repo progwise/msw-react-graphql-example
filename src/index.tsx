@@ -1,16 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createClient, Provider } from 'urql';
-import App from './App';
+import { App } from './App';
 import reportWebVitals from './reportWebVitals';
-
-const client = createClient({ url: 'https://tmdb.apps.quintero.io/' });
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider value={client}>
-      <App />
-    </Provider>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
