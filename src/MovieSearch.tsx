@@ -18,6 +18,7 @@ export const MovieSearch = ({ initialSearch }: MovieSearchProps) => {
       />
       <div>
         {result.fetching ? 'loading...' : undefined}
+        {result.error ? 'Network Error' : undefined}
         {result.data?.movies.search.edges.length === 0
           ? 'no movies found'
           : undefined}
