@@ -3,6 +3,15 @@ import ReactDOM from 'react-dom';
 import { App } from './App';
 import reportWebVitals from './reportWebVitals';
 
+const isMockActivated =
+  process.env.NODE_ENV === 'development' &&
+  window.location.pathname === '/mock';
+
+if (isMockActivated) {
+  const { worker } = require('./mocks/browser');
+  worker.start();
+}
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
