@@ -17,7 +17,7 @@ query getMovies($search: String!) {
 }
 `;
 
-interface MoviesQueryResult {
+export interface MoviesQueryResult {
   movies: {
     search: {
       edges: {
@@ -32,7 +32,7 @@ interface MoviesQueryResult {
   };
 }
 
-interface MoviesQueryVariable {
+export interface MoviesQueryVariable {
   search: string;
 }
 

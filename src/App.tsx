@@ -3,7 +3,7 @@ import { createClient, Provider } from 'urql';
 import { MovieSearch } from './MovieSearch';
 
 export const App = () => {
-  const client = createClient({ url: 'https://tmdb.apps.quintero.io/' });
+  const client = createClient({ url: 'https://tmdb.apps.quintero.io' });
 
   return (
     <Provider value={client}>
